@@ -1,0 +1,25 @@
+@import "../../../styles.scss";
+
+.footer { 
+    background-color: #A1F76D;
+    padding: 15px 0;
+    height: $hFooter;
+    // clear: both;
+    // position: relative;
+    // margin-top: -$hFooter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    p {
+        color: #391EFF;
+        text-align: center;
+        margin: 0;
+        font-family:'NeueMachina', serif;
+    }
+    a {
+        &:hover {
+            color: black;
+        }
+    }
+}

@@ -1,0 +1,35 @@
+@import "../../../styles.scss";
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $hHeader;
+    background: rgb(2,0,36);
+    background: linear-gradient(145deg, rgba(2,0,36,1) 0%, #391EFF 43% 100%);
+    .img-container {
+        width: 50px;
+        display: block;
+        margin: auto;
+        margin-left: 30px;
+        img {
+            max-width: 100%;
+        }
+    }
+    .navbar {
+        display: flex;
+        // align-items: center;
+        justify-items: end;
+        margin-right: 30px;
+        li {
+            margin: 0 10px;
+            a {
+                color: whitesmoke;
+                text-transform: uppercase;
+                &:hover {
+                    color: #A1F76D;
+                }
+            }
+        }
+    }
+}

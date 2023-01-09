@@ -1,0 +1,40 @@
+<section id="form" class="section">
+    <h2>Formulario de contacto</h2>
+    <p>¿Tienes algo un proyecto web en mente? ¡Hablemos!</p>
+    <form class="contact-form">
+        <div class="field-form">
+            <label for="name">Nombre *</label>
+            <input type="text" name="name" id="name" minlength="4" placeholder="Escribe tu nombre" required />
+            <span class="error">Tu nombre debe tener una extensión mínima de 4 caracteres.
+            </span>
+        </div>
+
+        <div class="field-form">
+            <label for="email">Email *</label>
+            <input type="email" name="email" id="email" placeholder="Escribe tu email" required />
+            <span class="error">Debes escribir tu correo electrónico para podernos contactar</span>
+        </div>
+
+        <div class="field-form">
+            <label for="phone">Teléfono</label>
+            <input type="number" name="phone" id="phone" pattern="/^[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{4}$/" placeholder="Escribe tu teléfono" />
+            <p class="error">Este dato no parece un número telefónico. Vuelve a intentarlo.</p>
+        </div>
+
+        <div class="field-form">
+            <label for="subject">Asunto *</label>
+            <input type="text" name="subject" id="subject" minlength="5" placeholder="Escribe el asunto de tu mensaje" required />
+            <span class="error">Escribe el asunto para saber de qué quieres hablar</span>
+        </div>
+
+        <div class="field-form">
+            <label for="message">Déjame tu mensaje *</label>
+            <textarea  name="message" id="message" minlength="10" value="" required>
+            </textarea>
+            <span class="error">Debes llenar este campo con lo que quieres decirme :)</span>
+        </div>
+        <div class="fiel-form">
+            <button type="submit" class="button btn-form">Enviar</button>
+        </div>
+    </form>
+</section>

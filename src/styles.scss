@@ -1,1 +1,119 @@
 /* You can add global styles to this file, and also import other style files */
+//FONTS
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@font-face {
+  font-family: NeueMachina;
+  src: url('./assets/fonts/Neue-Machina/NeueMachina-Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+};
+
+// $font-normal: 'Mulish', sans-serif;
+// $font-title: 'NeueMachina', serif;
+
+// // COLOR
+// $purple: #662d91;
+// $green: #A1F76D;
+
+// //MARGINS & PADDINGS
+
+// $s-sm: 10px;
+// $s-md: 20px;
+// $s-lg: 30px;
+// $s-xl: 15rem;
+
+// $size-xxs: 0.35rem;
+// $size-xs: 0.5rem;
+// $size-xs: 0.75rem;
+// $size-normal: 1rem;
+// $size-l: 3rem;
+// $size-xl: 5rem;
+// $size-xxl: 11rem;
+
+// $border-width: 2px;
+
+$hHeader: 70px;
+$hFooter: 50px;
+$margin-y-section: 30px;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  min-height: 100%;
+}
+
+h1, h2 {
+    font-family: 'NeueMachina', serif;
+    margin: 30px;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    font-family: 'NeueMachina', serif;
+    text-decoration: none;
+    display: inline-block;
+ }
+
+ p {
+    font-family: 'Mulish', sans-serif;
+    margin: 10px;
+ }
+
+ .button {
+    font-family:'NeueMachina', serif;
+    font-weight: 600;
+    border: solid 2px #A1F76D;
+    outline: 0;
+    padding: 1rem 4rem;
+    font-size: 1.5rem;
+    letter-spacing: .08rem;
+    background-color: whitesmoke;
+    position: relative;
+    cursor: pointer;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #A1F76D;
+      z-index: -1;
+      transition: all 0.3s ease-in-out;
+      border: 0;
+      box-shadow: 0px 0px 0px 2px whitesmoke;
+      width: calc(100%);
+      height: calc(100%);
+  }
+    &:hover {
+      &::after {
+        top: -#{0.5rem};
+        left: -#{0.5rem};
+        width: calc(100% + #{0.5rem} * 2);
+        height: calc(100% + #{0.5rem} * 2);
+      }
+    }
+  }
+
+  .btn-form {
+    margin: 30px auto;
+    display: block;
+  }
+
+ .section, .container {
+    display: block;
+    margin: $margin-y-section auto;
+    width: 70vw;
+    height: 100%;
+    overflow-y: auto;
+    flex: 1;
+ }
+ 

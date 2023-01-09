@@ -1,0 +1,16 @@
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .img-container {
+        width: 450px;
+        img {
+            filter: hue-rotate(280deg);
+            width: 100%;
+        }
+    }
+    a {
+        font-size: 2rem;
+    }
+}
