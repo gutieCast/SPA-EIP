@@ -4,37 +4,47 @@
     <form class="contact-form">
         <div class="field-form">
             <label for="name">Nombre *</label>
-            <input type="text" name="name" id="name" minlength="4" placeholder="Escribe tu nombre" required />
-            <span class="error">Tu nombre debe tener una extensión mínima de 4 caracteres.
-            </span>
+            <input type="text" name="name" id="name" [(ngModel)]="contactMessage.name" minlength="4" placeholder="Escribe tu nombre" required appInputIsEmpty />
+            <span *ngIf="!isFilled && isShow && contactMessage.name === ''" class="input-message">El nombre es un campo obligatorio. </span>
+            <p *ngIf="isFilled && isShow">Nombre registrado: {{ contactMessage.name }}</p>
+            <span *ngIf="contactMessage.name !== '' || isShow" class="error">Tu nombre debe tener una extensión mínima de 4 caracteres.</span>
         </div>
 
         <div class="field-form">
             <label for="email">Email *</label>
-            <input type="email" name="email" id="email" placeholder="Escribe tu email" required />
-            <span class="error">Debes escribir tu correo electrónico para podernos contactar</span>
+            <input type="email" name="email" id="email" [(ngModel)]="contactMessage.email" placeholder="Escribe tu email" required appInputIsEmpty />
+            <span *ngIf="!isFilled && isShow && contactMessage.email === ''" class="input-message">El correo es un campo obligatorio. </span>
+            <p *ngIf="isFilled && isShow">Correo registrado: {{ contactMessage.email }}</p>
+            <span *ngIf="contactMessage.email !== '' || isShow" class="error">Debes escribir tu correo electrónico para podernos contactar</span>
         </div>
 
         <div class="field-form">
-            <label for="phone">Teléfono</label>
-            <input type="number" name="phone" id="phone" pattern="/^[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{4}$/" placeholder="Escribe tu teléfono" />
-            <p class="error">Este dato no parece un número telefónico. Vuelve a intentarlo.</p>
+            <label for="phone">Teléfono *</label>
+            <input type="number" name="phone" id="phone" [(ngModel)]="contactMessage.phone" pattern="/^[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{4}$/" placeholder="Escribe tu teléfono" required appInputIsEmpty />
+            <span *ngIf="!isFilled && isShow && contactMessage.phone === null" class="input-message">El teléfono es un campo obligatorio. </span>
+            <p *ngIf="isFilled && isShow">Teléfono registrado: {{ contactMessage.phone }}</p>
+            <span *ngIf="contactMessage.phone !== null" class="error">Este dato no parece un número telefónico. Vuelve a intentarlo</span>
         </div>
 
         <div class="field-form">
             <label for="subject">Asunto *</label>
-            <input type="text" name="subject" id="subject" minlength="5" placeholder="Escribe el asunto de tu mensaje" required />
-            <span class="error">Escribe el asunto para saber de qué quieres hablar</span>
+            <input type="text" name="subject" id="subject" [(ngModel)]="contactMessage.subject" minlength="5" placeholder="Escribe el asunto de tu mensaje" required appInputIsEmpty />
+            <span *ngIf="!isFilled && isShow && contactMessage.subject === ''" class="input-message">El asunto es un campo obligatorio. </span>
+            <p *ngIf="isFilled && isShow">Asunto del mensaje: {{ contactMessage.subject }}</p>
+            <span *ngIf="contactMessage.subject !== '' || isShow" class="error">Escribe el asunto para saber de qué quieres hablar</span>
         </div>
 
         <div class="field-form">
             <label for="message">Déjame tu mensaje *</label>
-            <textarea  name="message" id="message" minlength="10" value="" required>
-            </textarea>
-            <span class="error">Debes llenar este campo con lo que quieres decirme :)</span>
+            <textarea name="message" id="message" [(ngModel)]="contactMessage.message" minlength="10" required appInputIsEmpty ></textarea>
+            <span *ngIf="!isFilled && isShow && contactMessage.message === ''" class="input-message">El mensaje es un campo obligatorio. </span>
+            <p *ngIf="isFilled && isShow">Mensaje: {{ contactMessage.message }}</p>
+            <span *ngIf="contactMessage.message !== '' || isShow" class="error">Debes llenar este campo con lo que quieres decirme :)</span>
         </div>
-        <div class="fiel-form">
-            <button type="submit" class="button btn-form">Enviar</button>
+        <div class="buttons-form">
+            <button type="button" class="button btn-form" (click)="checkIsFilled()">Validar</button>
+            <span *ngIf="!isFilled && isShow" class="input-message">Hay campos por llenar</span>
+            <button type="submit" [disabled]="!isFilled" class="button btn-form">Enviar</button>
         </div>
     </form>
 </section>

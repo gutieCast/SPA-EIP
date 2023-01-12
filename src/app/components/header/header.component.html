@@ -1,11 +1,12 @@
 <header class="header">
     <div class="img-container">
-        <a [routerLink]="['/']">
+        <a appHoverMenuItem [routerLink]="['/']">
             <img src="../../../assets/icons/icons8-home-page-60.png" alt="home icon">
         </a> 
     </div>
     <ul class="navbar">
-      <li> <a [routerLink]="['/formulario']">Formulario</a> </li>
-      <li> <a [routerLink]="['/curriculum-vitae']">Curriculum vitae</a> </li>
+      <li> <a appHoverMenuItem [routerLink]="['/registrarse']">Registrarse</a> </li>
+      <li> <a appHoverMenuItem [routerLink]="['/formulario']">Formulario</a> </li>
+      <li> <a appHoverMenuItem [routerLink]="['/curriculum-vitae']">Curriculum vitae</a> </li>
     </ul>
 </header>
