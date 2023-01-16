@@ -1,0 +1,25 @@
+<mat-card class="product-card">
+    <mat-card-header>
+      <mat-card-title> {{ product.title | uppercase }} </mat-card-title>
+      <mat-card-subtitle> {{ product.category }} </mat-card-subtitle>
+    </mat-card-header>
+    <div class="img-container">
+      <img mat-card-image [src]="product.image" [alt]="product.title">
+    </div>
+    <mat-card-content>
+      <p class="product-description">{{ product.description }}</p>
+      <p class="product-price">{{ product.price | number:'1.2-2' }} USD</p>
+      <p class="rating-container">
+          {{ product.rating.rate }}/5 of {{ product.rating.count }} reviews
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button class="add-to-card" (click)="addToCart(product.id)">
+        <mat-icon>add_shopping_cart</mat-icon>
+          Add to shopping cart
+      </button>
+    </mat-card-actions>
+    <mat-card-footer>
+    </mat-card-footer>
+  </mat-card>
+  

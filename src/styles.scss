@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-//FONTS
+// FONTS
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 @font-face {
@@ -9,34 +9,20 @@
   font-style: normal;
 };
 
-// $font-normal: 'Mulish', sans-serif;
-// $font-title: 'NeueMachina', serif;
+$font-normal: 'Mulish', sans-serif;
+$font-title: 'NeueMachina', serif;
 
-// // COLOR
-// $purple: #662d91;
-// $green: #A1F76D;
+// COLORS
+$purple: #662d91;
+$green: #A1F76D;
+$accent: #DD4A68;
 
-// //MARGINS & PADDINGS
-
-// $s-sm: 10px;
-// $s-md: 20px;
-// $s-lg: 30px;
-// $s-xl: 15rem;
-
-// $size-xxs: 0.35rem;
-// $size-xs: 0.5rem;
-// $size-xs: 0.75rem;
-// $size-normal: 1rem;
-// $size-l: 3rem;
-// $size-xl: 5rem;
-// $size-xxl: 11rem;
-
-// $border-width: 2px;
-
+// HEIGHTS MARGINS
 $hHeader: 70px;
 $hFooter: 50px;
 $margin-y-section: 30px;
 
+//TAGS
 * {
     margin: 0;
     padding: 0;
@@ -49,72 +35,39 @@ body {
 }
 
 h1, h2 {
-    font-family: 'NeueMachina', serif;
+    font-family: $font-title;
     margin: 30px;
+}
+
+h1 {
+  color: $purple;
+  font-size: 5rem;
 }
 
 li {
     list-style: none;
+    font-family: $font-normal;
 }
 
 a {
-    font-family: 'NeueMachina', serif;
+    font-family: $font-title;
     text-decoration: none;
     display: inline-block;
  }
 
  p {
-    font-family: 'Mulish', sans-serif;
+    font-family: $font-normal;
     margin: 10px;
  }
 
- .button {
-    font-family:'NeueMachina', serif;
-    font-weight: 600;
-    border: solid 2px #A1F76D;
-    outline: 0;
-    padding: 1rem 4rem;
-    font-size: 1.5rem;
-    letter-spacing: .08rem;
-    background-color: whitesmoke;
-    position: relative;
-    cursor: pointer;
-    
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: #A1F76D;
-      z-index: -1;
-      transition: all 0.3s ease-in-out;
-      border: 0;
-      box-shadow: 0px 0px 0px 2px whitesmoke;
-      width: calc(100%);
-      height: calc(100%);
-  }
-    &:hover {
-      &::after {
-        top: -#{0.5rem};
-        left: -#{0.5rem};
-        width: calc(100% + #{0.5rem} * 2);
-        height: calc(100% + #{0.5rem} * 2);
-      }
-    }
-  }
-
-  .btn-form {
-    margin: 30px auto;
-    display: block;
-  }
-
+ //GLOBAL CLASSSES
  .section, .container {
-    display: block;
-    margin: $margin-y-section auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 30px auto;
+    min-height: calc(100vh - (#{$hHeader + $hFooter + (2*$margin-y-section)}));
     width: 70vw;
-    height: 100%;
-    overflow-y: auto;
-    flex: 1;
  }
 
  .contact-form, .sign-up-form {
@@ -141,7 +94,7 @@ a {
       background: transparent;
 
       &:focus-visible {
-        outline-color: #662D91;
+        outline-color: $purple;
       }
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
@@ -153,19 +106,6 @@ a {
         -moz-appearance: textfield;
       }
       
-      // &:focus {
-      // //   color: whitesmoke;
-      //   outline: 0;
-      // }
-      
-      // // &:valid {
-      // //   border-color: #A1F76D;
-      // // }
-      
-      // // &:invalid:not(:focus) {
-      // //   border: 3px solid pink;
-      // // }
-      
       &:invalid:focus:not(:placeholder-shown) {
         & ~ .error {
           max-height: 200px;
@@ -176,16 +116,14 @@ a {
     
     .error {
       opacity: 0;
-      // color: pink;
-      // display:inline-block;
-      color: #DD4A68;
+      color: $accent;
       min-height: 40px;
       transition: 0.28s;
       overflow: hidden;
     }
 
     .input-message {
-      color:#DD4A68;
+      color: $accent;
       min-height: 40px;
       display:inline-block;
     }
@@ -211,4 +149,45 @@ a {
   }
 
 }
- 
+
+.button, a.button {
+   font-family:'NeueMachina', serif;
+   font-weight: 600;
+   border: solid 2px $green;
+   outline: 0;
+   padding: 1rem 4rem;
+   font-size: 1.5rem;
+   letter-spacing: .08rem;
+   background-color: whitesmoke;
+   position: relative;
+   cursor: pointer;
+   
+   &::after {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     background-color: $green;
+     z-index: -1;
+     transition: all 0.3s ease-in-out;
+     border: 0;
+     box-shadow: 0px 0px 0px 2px whitesmoke;
+     width: calc(100%);
+     height: calc(100%);
+ }
+   &:hover {
+     &::after {
+       top: -#{0.5rem};
+       left: -#{0.5rem};
+       width: calc(100% + #{0.5rem} * 2);
+       height: calc(100% + #{0.5rem} * 2);
+     }
+   }
+
+  .btn-form {
+    margin: 30px auto;
+    display: block;
+  }
+
+
+}

@@ -1,16 +1,17 @@
 h1 {
     text-align: center;
     margin: 30px;
-    color: #391EFF;
-    // font-family: $font-title;
-}
-
-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .content {
-    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    .topics {
+        margin: 10px;
+        li {
+            list-style: square;
+        }
+    }
 }

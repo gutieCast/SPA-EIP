@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { FormComponent } from './pages/form/form.component';
+import { ProductsListComponent } from './pages/products-list/products-list.component';
 import { CurriculumComponent } from './pages/curriculum/curriculum.component';
 import { Error404Component } from './pages/error404/error404.component';
 
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: "registrarse",
     component: SignUpComponent
+  },
+  { 
+    path: 'the-fake-store',
+    component: ProductsListComponent
   },
   { 
     path: 'formulario',

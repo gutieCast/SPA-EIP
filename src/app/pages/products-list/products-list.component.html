@@ -1,0 +1,32 @@
+<section id="fake-store" class="section">
+    <h1>Welcome to the Fake Store!</h1>
+    <div class="content">
+        <h2>Our products:</h2>
+        <mat-progress-spinner [mode]="'indeterminate'" color="#A1F76D" *ngIf="loading$ | async"></mat-progress-spinner>
+        <ng-container *ngIf="cart.length">
+            <button class="btn-cart btn-open" mat-fab matTooltip="Cart" mat-raised-button (click)="openCart()">
+                <mat-icon class="cart-toogle" [matBadge]="cart.length" matBadgeColor="warn">shopping_cart</mat-icon>
+            </button>
+            <ng-template class="cart-container" #cartContent>
+                <h5>Your Shopping Cart:</h5>
+                <ul class="cart">
+                    <li *ngFor="let product of cart">
+                        <p>
+                            {{ product.count }} - {{ product.product.title }}: <span class="price">{{ product.product.price * product.count | number:'1.2-2' }} USD</span>
+                        </p>
+                    </li>
+                </ul>
+                <button class="btn-cart btn-close" mat-button (click)="deleteAll()">Delete all</button>
+            </ng-template>
+        </ng-container>
+        <ul class="product-list">
+            <li *ngFor="let product of products">
+                <app-product-card [product]="product" (sendProductToCart)="addProductToCart($event)"></app-product-card>
+            </li>
+        </ul>
+        <div>
+
+        </div>
+    </div>
+  </section>
+
