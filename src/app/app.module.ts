@@ -16,6 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -60,7 +61,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatProgressSpinnerModule,
     MatBottomSheetModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSnackBarModule
   ],
   providers: [
     ProductService

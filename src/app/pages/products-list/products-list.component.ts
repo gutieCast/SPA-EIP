@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Product } from 'src/app/models/product.interface';
 import { ProductCart } from 'src/app/models/productCart.interface';
@@ -14,35 +15,54 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductsListComponent implements OnInit {
 
-  @ViewChild('cartContent') CartContent!: TemplateRef<Product[]>;
+  @ViewChild('cartContent') CartContent!: TemplateRef<ProductCart[]>;
 
   loading$ = this.loader.loading$;
   public products: Product[] = [];
   public cart: ProductCart[] = [];
+  private elapsed!: number;
 
   constructor(
     private productService: ProductService,
     public loader: LoadingService,
-    private _bottomSheet: MatBottomSheet
+    private _bottomSheet: MatBottomSheet,
+    public _snack: MatSnackBar
   ) { }
 
   ngOnInit(): void {
     this.getProducts();
+    this.showBarSnack();
   }
 
   private getProducts(): void {
+    const start: Date = new Date()
     this.loader.show()
     this.productService.get()
     .subscribe({
       next: (res) => {
+        const end: Date = new Date();
         this.products = res;
         this.loader.hide();
+        this.elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
       }, error: (err) => {
         console.log(err);
         this.loader.hide();
         alert('Error: Hubo un error al hacer la petición.');
       }
     })
+  }
+
+  private showBarSnack(): void {
+    setTimeout(() => {
+      if(!this.elapsed) {
+        this._snack.open('Ooops! This action is taking much time! Please, recharge the page', 'Get it!', {
+          duration: 3000,
+        });
+      }
+      if(this.elapsed && this._snack._openedSnackBarRef) {
+        this._snack.dismiss()
+      }
+    }, 7000);
   }
 
   public addProductToCart(id: number) {
